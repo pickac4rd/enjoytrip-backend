@@ -1,18 +1,13 @@
-package com.user.entity;
+package com.member.vo;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-@Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 public class Member {
-    @Id
     private String userId;
     private String userPw;
     private String userEmail;

@@ -1,6 +1,6 @@
 package com.security;
 
-import com.user.entity.Member;
+import com.member.vo.Member;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;

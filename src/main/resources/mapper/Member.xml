@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper file: query가 들어있다 -->
+<mapper namespace="com.mvc.mapper.MemberMapper">
+
+    <insert id="insert" parameterType="Member">
+        insert into member values (#{userId}, #{userPw}, #{userEmail},
+                                   #{userPhone},#{userName},#{userRole});
+    </insert>
+
+</mapper>

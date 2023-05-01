@@ -1,7 +1,7 @@
-package com.user.service;
+package com.member.service;
 
-import com.user.repository.MemberRepository;
-import com.user.entity.Member;
+import com.member.vo.Member;
+import com.member.mapper.MemberMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -12,24 +12,30 @@ import java.util.Optional;
 @Service
 public class MemberServiceImpl implements MemberService {
     @Autowired
-    MemberRepository repository;
+    MemberMapper mapper;
     @Override
-    public Member insert(Member member) {
+    public int insert(Member member) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         member.setUserPw(encoder.encode(member.getUserPw()));
         member.setUserRole("USER");
-        return repository.save(member);
+        return mapper.insert(member);
     }
 
     @Override
     public List<Member> findAll() {
-        return repository.findAll();
+        return null;
     }
 
     @Override
     public Optional<Member> findById(String userId) {
-        return repository.findById(userId);
+        return Optional.empty();
     }
+
+//
+//    @Override
+//    public List<Member> findAll() {
+//        return mapper.insert();
+//    }
 
 
 

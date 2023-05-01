@@ -1,12 +1,12 @@
-package com.user.service;
+package com.member.service;
 
-import com.user.entity.Member;
+import com.member.vo.Member;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface MemberService {
-    Member insert(Member member);
+    int insert(Member member);
 
     List<Member> findAll();
 

@@ -1,7 +1,6 @@
 package com.security;
 
-import com.user.entity.Member;
-import com.user.repository.MemberRepository;
+import com.member.vo.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

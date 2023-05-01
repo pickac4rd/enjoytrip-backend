@@ -27,8 +27,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/user/availability/**", "/*").permitAll()
-                .antMatchers("/user/tmp").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/", "/user/loginForm", "/user/loginProcess").permitAll()
+                .antMatchers("/user/useronly").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/user/adminonly").hasAnyRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -42,7 +43,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID")
                 .and();
-
 
     }
 

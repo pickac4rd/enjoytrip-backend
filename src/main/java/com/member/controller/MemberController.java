@@ -1,9 +1,8 @@
-package com.user.controller;
+package com.member.controller;
 
-import com.user.service.MemberService;
-import com.user.entity.Member;
+import com.member.service.MemberService;
+import com.member.vo.Member;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
