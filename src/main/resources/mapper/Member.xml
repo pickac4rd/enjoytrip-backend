@@ -4,7 +4,7 @@
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- mapper file: query가 들어있다 -->
-<mapper namespace="com.mvc.mapper.MemberMapper">
+<mapper namespace="com.member.mapper.MemberMapper">
 
     <insert id="insert" parameterType="Member">
         insert into member values (#{userId}, #{userPw}, #{userEmail},

@@ -10,7 +10,7 @@
 		select * from attraction_info
 	</select>
 
-	<select id="selectOne" parameterType="String" resultType="Attraction">
+	<select id="selectOne" parameterType="string" resultType="Attraction">
 		select * from attraction_info where content_id = #{content_id}
 	</select>
 
