@@ -25,6 +25,10 @@
 		update board set count = count+1 where board_id = #{board_id}
 	</update>
 
+	<update id="likeUp" parameterType="string">
+		update board set like_count = like_count+1 where board_id = #{board_id}
+	</update>
+
 	<update id="update" parameterType="Board">
 		update board set title = #{title}, content = #{content}, date = sysdate(), userid = "ssafy",count = 0, like_count = 0 where board_id = #{board_id}
 	</update>

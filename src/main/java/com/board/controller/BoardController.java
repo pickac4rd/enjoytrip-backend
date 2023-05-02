@@ -46,6 +46,15 @@ public class BoardController {
                 new ResponseEntity<String>("modify success!", HttpStatus.OK);
         return rb;// view name
     }
+
+    @PutMapping(value = "/board/{board_id}/like")
+    public ResponseEntity<String> likeUp(@PathVariable String board_id)throws Exception  {
+
+        service.likeUp(board_id);
+        ResponseEntity<String> rb =
+                new ResponseEntity<String>("like success!", HttpStatus.OK);
+        return rb;// view name
+    }
     @DeleteMapping(value = "/board/{num}")
     public ResponseEntity<String> delete(@PathVariable String num)throws Exception  {
         int x = service.delete(num);

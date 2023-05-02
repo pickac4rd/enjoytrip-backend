@@ -19,9 +19,11 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public Board selectOne(String num) {
-        return mapper.selectOne(num);
+    public Board selectOne(String board_id) {
+        mapper.countUp(board_id);
+        return mapper.selectOne(board_id);
     }
+
 
     @Override
     public int insert(Board b) {
@@ -29,14 +31,16 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public int delete(String num) {
-        return mapper.delete(num);
+    public int delete(String board_id) {
+        return mapper.delete(board_id);
     }
 
     @Override
     public int update(Board c) {
         return mapper.update(c);
     }
+    @Override
+    public int likeUp(String board_id){return mapper.likeUp(board_id);}
 
 //    @Override
 //    public List<Board> search(String address) {
