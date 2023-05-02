@@ -10,6 +10,9 @@ public interface MemberService {
 
     List<Member> findAll();
 
-    Optional<Member> findById(String userId);
+    Member login(Member member);
 
+    int delete(String userId);
+
+    int update(Member member);
 }

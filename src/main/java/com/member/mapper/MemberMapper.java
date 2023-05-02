@@ -8,4 +8,9 @@ public interface MemberMapper {
 
     int insert(Member member);
 
+    Member login(Member member);
+
+    int delete(String userId);
+
+    int update(Member member);
 }

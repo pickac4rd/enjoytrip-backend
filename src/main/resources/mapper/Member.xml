@@ -4,11 +4,26 @@
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- mapper file: query가 들어있다 -->
-<mapper namespace="com.mvc.mapper.MemberMapper">
+<mapper namespace="com.member.mapper.MemberMapper">
 
     <insert id="insert" parameterType="Member">
         insert into member values (#{userId}, #{userPw}, #{userEmail},
-                                   #{userPhone},#{userName},#{userRole});
+                                   #{userPhone},#{userName},#{userRole})
     </insert>
+
+    <select id="login" parameterType="Member" resultType="Member">
+        select * from member where userid=#{userId} and userpw=#{userPw}
+    </select>
+
+    <delete id="delete" parameterType="string">
+        delete from member where userid=#{userId}
+    </delete>
+    
+    <update id="update" parameterType="Member">
+        update member
+        set userName=#{userName}, userEmail=#{userEmail}, userPhone=#{userPhone}
+        where userId=#{userId}
+    </update>
+
 
 </mapper>
