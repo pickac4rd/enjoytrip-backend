@@ -46,4 +46,8 @@
 		insert into review values (#{review_id}, #{content_id}, #{userId},
 								   #{title},#{content},#{date},#{star})
 	</insert>
+
+	<delete id="deleteReview" parameterType="string">
+		delete from review where review_id=#{review_id}
+	</delete>
 </mapper>

@@ -4,7 +4,6 @@ import com.attraction.vo.Attraction;
 import com.attraction.mapper.AttractionMapper;
 import com.attraction.vo.Review;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,8 +30,13 @@ public class AttractionServiceImpl implements AttractionService{
     }
 
     @Override
-    public void insertReview(Review review) {
-        mapper.insertReview(review);
+    public int insertReview(Review review) {
+        return mapper.insertReview(review);
+    }
+
+    @Override
+    public int deleteReview(String review_id) {
+        return mapper.deleteReview(review_id);
     }
 
 //    @Override

@@ -10,7 +10,9 @@ public interface AttractionService {
     Attraction selectOne(String num);
     List<Attraction> search(Attraction attraction);
 
-    void insertReview(Review review);
+    int insertReview(Review review);
+
+    int deleteReview(String reviewId);
 
 //    public int insert(Attraction c);
 //    public int delete(String num);

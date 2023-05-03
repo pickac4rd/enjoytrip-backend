@@ -13,7 +13,9 @@ public interface AttractionMapper {
 
     List<Attraction> search(Attraction attraction);
 
-    void insertReview(Review review);
+    int insertReview(Review review);
+
+    int deleteReview(String review_id);
 //    public int insert(Attraction c);
 //    public int delete(String num);
 //    public int update(Attraction c);

@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,9 +35,23 @@ public class AttractionController {
     }
 
     @PostMapping(value = "/attractions/{content_id}")
-    public ResponseEntity insertReview(Review review){
-        service.insertReview(review);
-        return ResponseEntity.status(HttpStatus.OK).build();
+    public ResponseEntity<String> insertReview(Review review){
+        int x = service.insertReview(review);
+        if(x==1){
+            return ResponseEntity.status(HttpStatus.OK).body("Insert Successfully");
+        }else{
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Insert Failed");
+        }
+    }
+
+    @DeleteMapping(value = "/attractions/{content_id}/{review_id}")
+    public ResponseEntity<String> deleteReview(@PathVariable String review_id){
+        int x = service.deleteReview(review_id);
+        if(x==1){
+            return ResponseEntity.status(HttpStatus.OK).body("Delete Successfully");
+        }else{
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Delete Failed");
+        }
     }
 
 
