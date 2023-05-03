@@ -6,6 +6,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Attraction {
 
     private String content_id; // PK
@@ -31,20 +32,5 @@ public class Attraction {
     private String longitude;
     private String mlevel;
 
-    public Attraction(String content_type_id, String title, String addr1, String addr2, String zipcode, String tel, String first_image, String first_image2, String readcount, String sido_code, String gugun_code, String latitude, String longitude, String mlevel) {
-        this.content_type_id = content_type_id;
-        this.title = title;
-        this.addr1 = addr1;
-        this.addr2 = addr2;
-        this.zipcode = zipcode;
-        this.tel = tel;
-        this.first_image = first_image;
-        this.first_image2 = first_image2;
-        this.readcount = readcount;
-        this.sido_code = sido_code;
-        this.gugun_code = gugun_code;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.mlevel = mlevel;
-    }
+
 }
