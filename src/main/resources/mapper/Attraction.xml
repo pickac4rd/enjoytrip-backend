@@ -26,10 +26,24 @@
 <!--		update attraction_info set name = #{name}, address = #{address} where num = #{num}-->
 <!--	</update>-->
 
-<!--	<select id="search" parameterType="String" resultType="Attraction">-->
-<!--		select * from attraction_info-->
-<!--		<if test="address != null">-->
-<!--			where address like concat("%", #{address}, "%")-->
-<!--		</if>-->
-<!--	</select>-->
+	<select id="search" parameterType="Attraction" resultType="Attraction">
+		select * from attraction_info where 1=1
+		<if test="title != null or title != ''">
+			and title like concat("%", #{title}, "%")
+		</if>
+		<if test="gugun_code != null or gugun_code != ''">
+			and gugun_code like #{gugun_code}
+		</if>
+		<if test="sido_code != null or sido_code != ''">
+			and sido_code like #{sido_code}
+		</if>
+		<if test="content_type_id != null or content_type_id != ''">
+			and content_type_id like #{content_type_id}
+		</if>
+	</select>
+
+	<insert id="insertReview" parameterType="Review">
+		insert into review values (#{review_id}, #{content_id}, #{userId},
+								   #{title},#{content},#{date},#{star})
+	</insert>
 </mapper>
