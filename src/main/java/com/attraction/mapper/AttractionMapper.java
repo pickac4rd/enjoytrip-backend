@@ -1,14 +1,21 @@
 package com.attraction.mapper;
 
 import com.attraction.vo.Attraction;
+import com.attraction.vo.Review;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 @Mapper
 public interface AttractionMapper {
-    public List<Attraction> selectAll();
-    public Attraction selectOne(String num);
+    List<Attraction> selectAll();
+    Attraction selectOne(String num);
+
+    List<Attraction> search(Attraction attraction);
+
+    int insertReview(Review review);
+
+    int deleteReview(String review_id);
 //    public int insert(Attraction c);
 //    public int delete(String num);
 //    public int update(Attraction c);

@@ -31,6 +31,6 @@ public class Attraction {
     private String latitude;
     private String longitude;
     private String mlevel;
-
+    private String like_count;
 
 }
