@@ -1,3 +1,7 @@
+USECASE
+
+![image](/uploads/66d9023cf926d5f42138a6efb5fd2ea8/image.png)
+
 ---Attraction---
 
 1.attaraction_all 모든 관광지 정보를 가져옴
