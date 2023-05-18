@@ -28,16 +28,16 @@
 
 	<select id="search" parameterType="Attraction" resultType="Attraction">
 		select * from attraction_info where 1=1
-		<if test="title != null or title != ''">
-			and title like concat("%", #{title}, "%")
+		<if test="title != null">
+			and title like concat('%',#{title},'%')
 		</if>
-		<if test="gugun_code != null or gugun_code != ''">
+		<if test="gugun_code != null">
 			and gugun_code like #{gugun_code}
 		</if>
-		<if test="sido_code != null or sido_code != ''">
+		<if test="sido_code != null">
 			and sido_code like #{sido_code}
 		</if>
-		<if test="content_type_id != null or content_type_id != ''">
+		<if test="content_type_id != null">
 			and content_type_id like #{content_type_id}
 		</if>
 	</select>
@@ -50,4 +50,12 @@
 	<delete id="deleteReview" parameterType="string">
 		delete from review where review_id=#{review_id}
 	</delete>
+
+	<select id="selectSidoList" resultType="Sido">
+		select * from sido
+	</select>
+
+	<select id="selectGugunList" parameterType="string" resultType="Gugun">
+		select * from gugun where sido_code = {sidoCode}
+	</select>
 </mapper>

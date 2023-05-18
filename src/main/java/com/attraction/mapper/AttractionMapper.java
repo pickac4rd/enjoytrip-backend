@@ -1,7 +1,9 @@
 package com.attraction.mapper;
 
 import com.attraction.vo.Attraction;
+import com.attraction.vo.Gugun;
 import com.attraction.vo.Review;
+import com.attraction.vo.Sido;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -18,7 +20,9 @@ public interface AttractionMapper {
     int deleteReview(String review_id);
 //    public int insert(Attraction c);
 //    public int delete(String num);
-//    public int update(Attraction c);
+    int update(Attraction c);
 
-//    public List<Attraction> search(String address);
+    List<Sido> selectSidoList();
+
+    List<Gugun> selectGugunList(String sidoCode);
 }

@@ -2,7 +2,10 @@ package com.attraction.controller;
 
 import com.attraction.vo.Attraction;
 import com.attraction.service.AttractionService;
+import com.attraction.vo.Gugun;
 import com.attraction.vo.Review;
+import com.attraction.vo.Sido;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +16,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@CrossOrigin("*")
 @RestController
+@Slf4j
 public class AttractionController {
     @Autowired
     AttractionService service;
@@ -30,7 +35,8 @@ public class AttractionController {
     }
 
     @GetMapping(value = "/attractions/search") // db에 입력
-    public ResponseEntity<List<Attraction>> search(Attraction attraction) throws Exception {// vo. 사용자가 입력한 값 4개를 받아옴.입력화면의 칸이름과 vo의 필드명이 일치해야 함.
+    public ResponseEntity<List<Attraction>> search(@ModelAttribute Attraction attraction) throws Exception {// vo. 사용자가 입력한 값 4개를 받아옴.입력화면의 칸이름과 vo의 필드명이 일치해야 함.
+        System.out.println(attraction.toString());
         return ResponseEntity.status(HttpStatus.OK).body(service.search(attraction));// redirect
     }
 
@@ -52,6 +58,20 @@ public class AttractionController {
         }else{
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Delete Failed");
         }
+    }
+
+    @GetMapping(value = "/attractions/sido")
+    public ResponseEntity<List<Sido>> selectSidoList(){
+        System.out.println("selectSido");
+        List<Sido> list = service.selectSidoList();
+        return ResponseEntity.status(HttpStatus.OK).body(list);
+
+    }
+
+    @GetMapping(value = "/attractions/sido/{sido_code}")
+    public ResponseEntity<List<Gugun>> selectGugunList(@PathVariable String sido_code){
+        List<Gugun> list = service.selectGugunList(sido_code);
+        return ResponseEntity.status(HttpStatus.OK).body(list);
     }
 
 
