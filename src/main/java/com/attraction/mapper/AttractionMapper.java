@@ -7,6 +7,7 @@ import com.attraction.vo.Sido;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface AttractionMapper {
@@ -25,4 +26,6 @@ public interface AttractionMapper {
     List<Sido> selectSidoList();
 
     List<Gugun> selectGugunList(String sidoCode);
+
+    List<Attraction> selectPartial(Map<String, String> paramMap);
 }

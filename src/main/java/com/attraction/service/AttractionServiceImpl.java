@@ -8,7 +8,9 @@ import com.attraction.vo.Sido;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class AttractionServiceImpl implements AttractionService{
@@ -49,6 +51,14 @@ public class AttractionServiceImpl implements AttractionService{
     @Override
     public List<Gugun> selectGugunList(String sidoCode) {
         return mapper.selectGugunList(sidoCode);
+    }
+
+    @Override
+    public List<Attraction> selectPartial(String offset, String limit) {
+        Map<String,String> paramMap = new HashMap<>();
+        paramMap.put("offset", offset);
+        paramMap.put("limit",limit);
+        return mapper.selectPartial(paramMap);
     }
 
 

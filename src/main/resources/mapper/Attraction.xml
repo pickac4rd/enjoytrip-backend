@@ -58,4 +58,8 @@
 	<select id="selectGugunList" parameterType="string" resultType="Gugun">
 		select * from gugun where sido_code = {sidoCode}
 	</select>
+
+	<select id="selectPartial" parameterType="hashmap" resultType="Attraction">
+		select * from attraction_info LIMIT ${offset}, ${limit}
+	</select>
 </mapper>

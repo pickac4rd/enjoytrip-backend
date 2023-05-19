@@ -20,6 +20,8 @@ public interface AttractionService {
 
     List<Gugun> selectGugunList(String sidoCode);
 
+    List<Attraction> selectPartial(String offset, String limit);
+
 //    public int insert(Attraction c);
 //    public int delete(String num);
 //    public int update(Attraction c);

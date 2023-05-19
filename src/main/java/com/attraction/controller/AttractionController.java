@@ -74,6 +74,13 @@ public class AttractionController {
         return ResponseEntity.status(HttpStatus.OK).body(list);
     }
 
+    @GetMapping(value = "/attractions/partial")
+    public ResponseEntity<List<Attraction>> selectPartial(String offset, String limit){
+        List<Attraction> list = service.selectPartial(offset, limit);
+        System.out.println("offset = " + offset);
+        System.out.println("limit = " + limit);
+        return ResponseEntity.status(HttpStatus.OK).body(list);
+    }
 //    @PostMapping(value = "/customers/aa") // db에 입력
 //    @ApiOperation(notes = "객체를 삽입 합니다.", value = "Attraction 객체 삽입")
 //    public Map<String, String> insertProcess2(@RequestBody Car c) throws Exception {// vo. 사용자가 입력한 값 4개를 받아옴.입력화면의 칸이름과 vo의 필드명이 일치해야 함.
