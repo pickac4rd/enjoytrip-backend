@@ -20,6 +20,7 @@ public class BoardController {
     @GetMapping(value =  "/board" )
     public ResponseEntity<List<Board>> selectAll()throws Exception {// Map(key, value)
 
+
         return ResponseEntity.status(HttpStatus.OK).body(service.selectAll());
 
     }
@@ -46,6 +47,7 @@ public class BoardController {
                 new ResponseEntity<String>("modify success!", HttpStatus.OK);
         return rb;// view name
     }
+
 
     @PutMapping(value = "/board/{board_id}/like")
     public ResponseEntity<String> likeUp(@PathVariable String board_id)throws Exception  {

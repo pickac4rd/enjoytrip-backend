@@ -7,6 +7,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString
 public class Attraction {
 
     private String content_id; // PK
@@ -31,7 +32,6 @@ public class Attraction {
     private String latitude;
     private String longitude;
     private String mlevel;
-
     private String like_count;
 
 }

@@ -2,11 +2,15 @@ package com.attraction.service;
 
 import com.attraction.vo.Attraction;
 import com.attraction.mapper.AttractionMapper;
+import com.attraction.vo.Gugun;
 import com.attraction.vo.Review;
+import com.attraction.vo.Sido;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class AttractionServiceImpl implements AttractionService{
@@ -39,6 +43,25 @@ public class AttractionServiceImpl implements AttractionService{
         return mapper.deleteReview(review_id);
     }
 
+    @Override
+    public List<Sido> selectSidoList() {
+        return mapper.selectSidoList();
+    }
+
+    @Override
+    public List<Gugun> selectGugunList(String sidoCode) {
+        return mapper.selectGugunList(sidoCode);
+    }
+
+    @Override
+    public List<Attraction> selectPartial(String offset, String limit) {
+        Map<String,String> paramMap = new HashMap<>();
+        paramMap.put("offset", offset);
+        paramMap.put("limit",limit);
+        return mapper.selectPartial(paramMap);
+    }
+
+
 //    @Override
 //    public int insert(Attraction c) {
 //        return 0;
@@ -54,8 +77,4 @@ public class AttractionServiceImpl implements AttractionService{
 //        return 0;
 //    }
 //
-//    @Override
-//    public List<Attraction> search(String address) {
-//        return null;
-//    }
 }
