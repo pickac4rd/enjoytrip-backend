@@ -25,7 +25,7 @@ public class AttractionController {
     @GetMapping(value =  "/attractions" )
     public ResponseEntity<List<Attraction>> selectAll()throws Exception {// Map(key, value)
         List<Attraction> list = service.selectAll();
-
+        System.out.println("selectAll");
         return ResponseEntity.status(HttpStatus.OK).body(list);
     }
     @GetMapping(value = "/attractions/{content_id}")
