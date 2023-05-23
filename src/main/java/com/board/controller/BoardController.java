@@ -2,7 +2,7 @@ package com.board.controller;
 
 import com.board.service.BoardService;
 import com.board.vo.Board;
-import com.member.vo.Member;
+//import com.member.vo.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

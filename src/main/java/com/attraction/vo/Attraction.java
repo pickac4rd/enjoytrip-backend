@@ -7,6 +7,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString
 public class Attraction {
 
     private String content_id; // PK
