@@ -35,7 +35,7 @@ public class AttractionController {
     }
 
     @PostMapping(value = "/attractions/{content_id}")
-    public ResponseEntity<String> insertReview(Review review){
+    public ResponseEntity<String> insertReview(@RequestBody Review review){
         int x = service.insertReview(review);
         if(x==1){
             return ResponseEntity.status(HttpStatus.OK).body("Insert Successfully");

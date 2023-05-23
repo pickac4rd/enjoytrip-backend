@@ -32,8 +32,8 @@ public class BoardController {
 
     @PostMapping(value = "/board") // db에 입력
     public ResponseEntity<String> insertProcess(@RequestBody Board b, HttpSession session) throws Exception {// vo. 사용자가 입력한 값 4개를 받아옴.입력화면의 칸이름과 vo의 필드명이 일치해야 함.
-        Member member=(Member) session.getAttribute("member");
-        b.setUserid(member.getUserId());
+//        Member member=(Member) session.getAttribute("member");
+//        b.setUserid(member.getUserId());
         service.insert(b);
         ResponseEntity<String> rb =
                 new ResponseEntity<String>("insert success!",HttpStatus.OK);
