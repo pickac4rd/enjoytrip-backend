@@ -2,46 +2,75 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.ssafy.mapper.MemberMapper">
+<mapper namespace="com.ssafy.mapper.UserMapper">
 
-	<select id="login" parameterType="memberDto" resultType="memberDto">
-		select uid, username, userid, email
-		from ssafy_member
-		where userid = #{userid} and userpwd = #{userpwd}
+	<select id="login" parameterType="user" resultType="user">
+		select uid, id, name, email, isadmin, pwd, image
+		from user
+		where id = #{id} and pwd = #{pwd}
 	</select>
-	
-	<select id="userInfo" parameterType="string" resultType="memberDto">
-		select uid, username, userid, email, joindate
-		from ssafy_member
-		where userid = #{userid}
+
+	<select id="userInfo" parameterType="string" resultType="user">
+		select uid, id, name, email, isadmin, image
+		from user
+		where id = #{id}
 	</select>
-	
+
 	<select id="getRefreshToken" parameterType="string" resultType="string">
 		select token
-		from ssafy_member
-		where userid = #{userid}
+		from user
+		where id = #{id}
 	</select>
-	
+
 	<update id="saveRefreshToken" parameterType="map">
-		update ssafy_member
+		update user
 		set token = #{token}
-		where userid = #{userid}
+		where id = #{id}
 	</update>
-	
+
 	<update id="deleteRefreshToken" parameterType="map">
-		update ssafy_member
+		update user
 		set token = #{token, jdbcType=VARCHAR}
-		where userid = #{userid}
+		where id = #{id}
+	</update>
+
+	<insert id="addUser" parameterType="map">
+		insert into user (id, pwd, name, email)
+		values (#{id}, #{pwd}, #{name}, #{email})
+	</insert>
+
+	<select id="idcheck" parameterType="String" resultType="int">
+		select count(id)
+		from user
+		where id = #{id}
+	</select>
+
+	<update id="updateUser" parameterType="User">
+		update user
+		set name = #{name}, email = #{email}, pwd = #{pwd}, image = #{image}
+		where uid = #{uid}
 	</update>
 
 	<delete id="removeUser" parameterType="int">
-		delete from ssafy_member
+		delete from user
 		where uid = #{uid}
 	</delete>
 
-	<update id="updateUser" parameterType="memberDto">
-		update ssafy_member
-		set username = #{username}, email = #{email}, userpwd = #{userpwd}
+	<select id="getIdByEmail" parameterType="String" resultType="String">
+		select id
+		from user
+		where email = #{email}
+	</select>
+
+	<select id="getUidForPw" parameterType="String" resultType="User">
+		select uid, id, email
+		from user
+		where id = #{id}
+	</select>
+
+	<update id="changeTempPw" parameterType="map">
+		update user
+		set pwd = #{pwd}
 		where uid = #{uid}
 	</update>
 </mapper>
