@@ -56,10 +56,47 @@
 	</select>
 
 	<select id="selectGugunList" parameterType="string" resultType="Gugun">
-		select * from gugun where sido_code = {sidoCode}
+		select * from gugun where gugun.sido_code = #{sidoCode}
 	</select>
 
 	<select id="selectPartial" parameterType="hashmap" resultType="Attraction">
 		select * from attraction_info LIMIT ${offset}, ${limit}
+	</select>
+
+	<select id="getAttractionLength" resultType="int">
+		select count(*) from attraction_info
+	</select>
+
+	<select id="getSearchedAttractionLength" resultType="int" parameterType="hashmap">
+		select count(*) from attraction_info where 1=1
+		<if test="title != ''">
+			and title like concat('%',#{title},'%')
+		</if>
+		<if test="gugun_code != ''">
+			and gugun_code like #{gugun_code}
+		</if>
+		<if test="sido_code != ''">
+			and sido_code like #{sido_code}
+		</if>
+		<if test="content_type_id != ''">
+			and content_type_id like #{content_type_id}
+		</if>
+	</select>
+
+	<select id="selectPartialSearch" resultType="Attraction" parameterType="hashmap">
+		select * from attraction_info where 1=1
+		<if test="text != null">
+			and title like concat('%',#{text},'%')
+		</if>
+		<if test="gugun_code != null">
+			and gugun_code like #{gugun_code}
+		</if>
+		<if test="sido_code != null">
+			and sido_code like #{sido_code}
+		</if>
+		<if test="content_type_id != null">
+			and content_type_id like #{content_type_id}
+		</if>
+		LIMIT ${offset}, ${limit}
 	</select>
 </mapper>

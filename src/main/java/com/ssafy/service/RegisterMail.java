@@ -52,6 +52,7 @@ public class RegisterMail implements MailServiceInter{
 		// 보내는 사람의 이메일 주소, 보내는 사람 이름
 		message.setFrom(new InternetAddress(naverSenderId, "EnjoyTrip_Admin"));// 보내는 사람
 
+		System.out.println("--------------------------");
 		System.out.println(message.getFrom());
 		return message;
 	}

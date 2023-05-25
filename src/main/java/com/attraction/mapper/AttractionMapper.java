@@ -28,4 +28,10 @@ public interface AttractionMapper {
     List<Gugun> selectGugunList(String sidoCode);
 
     List<Attraction> selectPartial(Map<String, String> paramMap);
+
+    Integer getAttractionLength();
+
+    List<Attraction> selectPartialSearch(Map<String,String> paramMap);
+
+    Integer getSearchedAttractionLength(Map<String,String> paramMap);
 }
