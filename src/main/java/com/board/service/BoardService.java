@@ -1,18 +1,21 @@
 package com.board.service;
 
-import com.board.vo.Board;
-import com.board.vo.Board;
 
-import java.sql.SQLException;
 import java.util.List;
 
-public interface BoardService {
-    public List<Board> selectAll();
-    public Board selectOne(String board_id);
-    public int insert(Board b);
-    public int delete(String board_id);
-    public int update(Board b);
+import com.board.vo.Board;
+import com.board.vo.BoardParameterDto;
+import com.util.PageNavigation;
+import com.board.vo.Board;
+import com.board.vo.BoardParameterDto;
 
-    public int likeUp(String board_id);
-//    public List<Board> search(String address);
+public interface BoardService {
+	public boolean writeArticle(Board boardDto) throws Exception;
+	public List<Board> listArticle(BoardParameterDto boardParameterDto) throws Exception;
+	public PageNavigation makePageNavigation(BoardParameterDto boardParameterDto) throws Exception;
+
+	public Board getArticle(int articleno) throws Exception;
+	public void updateHit(int articleno) throws Exception;
+	public boolean modifyArticle(Board boardDto) throws Exception;
+	public boolean deleteArticle(int articleno) throws Exception;
 }
