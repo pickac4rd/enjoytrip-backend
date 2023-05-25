@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 import java.util.Map;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/board")
 @Api("게시판 컨트롤러  API V1")
