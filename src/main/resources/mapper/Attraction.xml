@@ -42,9 +42,13 @@
 		</if>
 	</select>
 
+	<select id="selectReview" parameterType="string" resultType="Review">
+		select * from review where content_id = #{content_id}
+	</select>
+
 	<insert id="insertReview" parameterType="Review">
 		insert into review values (#{review_id}, #{content_id}, #{userId},
-								   #{title},#{content},#{date},#{star})
+								   #{title},#{content},sysdate(),#{star})
 	</insert>
 
 	<delete id="deleteReview" parameterType="string">
@@ -69,16 +73,16 @@
 
 	<select id="getSearchedAttractionLength" resultType="int" parameterType="hashmap">
 		select count(*) from attraction_info where 1=1
-		<if test="title != ''">
+		<if test="title != null">
 			and title like concat('%',#{title},'%')
 		</if>
-		<if test="gugun_code != ''">
+		<if test="gugun_code != null">
 			and gugun_code like #{gugun_code}
 		</if>
-		<if test="sido_code != ''">
+		<if test="sido_code != null">
 			and sido_code like #{sido_code}
 		</if>
-		<if test="content_type_id != ''">
+		<if test="content_type_id != null">
 			and content_type_id like #{content_type_id}
 		</if>
 	</select>

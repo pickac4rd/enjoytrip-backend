@@ -28,6 +28,8 @@ public interface AttractionService {
 
     Integer getSearchedAttractionLength(String sido_code, String gugun_code, String content_type_id, String text);
 
+    List<Review> selectReview(String contentId);
+
 //    public int insert(Attraction c);
 //    public int delete(String num);
 //    public int update(Attraction c);

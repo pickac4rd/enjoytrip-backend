@@ -88,6 +88,11 @@ public class AttractionServiceImpl implements AttractionService{
         return mapper.getSearchedAttractionLength(paramMap);
     }
 
+    @Override
+    public List<Review> selectReview(String contentId) {
+        return mapper.selectReview(contentId);
+    }
+
 
 //    @Override
 //    public int insert(Attraction c) {

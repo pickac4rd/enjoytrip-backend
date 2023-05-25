@@ -34,4 +34,6 @@ public interface AttractionMapper {
     List<Attraction> selectPartialSearch(Map<String,String> paramMap);
 
     Integer getSearchedAttractionLength(Map<String,String> paramMap);
+
+    List<Review> selectReview(String content_id);
 }

@@ -40,7 +40,13 @@ public class AttractionController {
         return ResponseEntity.status(HttpStatus.OK).body(service.search(attraction));// redirect
     }
 
-    @PostMapping(value = "/attractions/{content_id}")
+    @GetMapping(value = "/attractions/review/{content_id}")
+    public ResponseEntity<List<Review>> selectReview(@PathVariable String content_id){
+        List<Review> list = service.selectReview(content_id);
+        return ResponseEntity.status(HttpStatus.OK).body(list);
+    }
+
+    @PostMapping(value = "/attractions/review/{content_id}")
     public ResponseEntity<String> insertReview(@RequestBody Review review){
         int x = service.insertReview(review);
         if(x==1){
@@ -50,7 +56,7 @@ public class AttractionController {
         }
     }
 
-    @DeleteMapping(value = "/attractions/{content_id}/{review_id}")
+    @DeleteMapping(value = "/attractions/review/{content_id}/{review_id}")
     public ResponseEntity<String> deleteReview(@PathVariable String review_id){
         int x = service.deleteReview(review_id);
         if(x==1){
