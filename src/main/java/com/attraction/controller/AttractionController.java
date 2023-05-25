@@ -74,12 +74,49 @@ public class AttractionController {
         return ResponseEntity.status(HttpStatus.OK).body(list);
     }
 
-    @GetMapping(value = "/attractions/partial")
-    public ResponseEntity<List<Attraction>> selectPartial(String offset, String limit){
-        List<Attraction> list = service.selectPartial(offset, limit);
+//    @GetMapping(value = "/attractions/partial")
+//    public ResponseEntity<List<Attraction>> selectPartial(String offset, String limit){
+//        List<Attraction> list = service.selectPartial(offset, limit);
+//        System.out.println("offset = " + offset);
+//        System.out.println("limit = " + limit);
+//        return ResponseEntity.status(HttpStatus.OK).body(list);
+//    }
+
+    @GetMapping(value = "/attractions/partial/search")
+    public ResponseEntity<List<Attraction>> selectPartial(String offset, String limit,String sido_code,String gugun_code,String content_type_id, String title){
+
+        if(sido_code != null && sido_code.equals("undefined")){
+            sido_code = null;
+        }
+        if(gugun_code != null && gugun_code.equals("undefined")){
+            gugun_code = null;
+        }
+        if(content_type_id != null && content_type_id.equals("undefined")){
+            content_type_id = null;
+        }
+        if(title != null && title.equals("undefined")){
+            title = null;
+        }
+        List<Attraction> list = service.selectPartialSearch(offset, limit,sido_code,gugun_code,content_type_id,title);
+
         System.out.println("offset = " + offset);
-        System.out.println("limit = " + limit);
+        System.out.println("sido_code = " + sido_code);
+        System.out.println("gugun_code = " + gugun_code);
+        System.out.println("content_type_id = " + content_type_id);
+        System.out.println("title = " + title);
         return ResponseEntity.status(HttpStatus.OK).body(list);
+    }
+
+    @GetMapping(value = "/attractions/partial/length")
+    public ResponseEntity<Integer> getAttractionLength(){
+        Integer count = service.getAttractionLength();
+        return ResponseEntity.status(HttpStatus.OK).body(count);
+    }
+
+    @GetMapping(value = "/attractions/partial/search-length")
+    public ResponseEntity<Integer> getSearchedAttractionLength(String sido_code,String gugun_code,String content_type_id, String text){
+        Integer count = service.getSearchedAttractionLength(sido_code,gugun_code,content_type_id,text);
+        return ResponseEntity.status(HttpStatus.OK).body(count);
     }
 //    @PostMapping(value = "/customers/aa") // db에 입력
 //    @ApiOperation(notes = "객체를 삽입 합니다.", value = "Attraction 객체 삽입")

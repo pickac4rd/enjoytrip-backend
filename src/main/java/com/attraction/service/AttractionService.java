@@ -22,6 +22,12 @@ public interface AttractionService {
 
     List<Attraction> selectPartial(String offset, String limit);
 
+    List<Attraction> selectPartialSearch(String offset, String limit, String sido_code, String gugun_code, String content_type_id, String text);
+
+    Integer getAttractionLength();
+
+    Integer getSearchedAttractionLength(String sido_code, String gugun_code, String content_type_id, String text);
+
 //    public int insert(Attraction c);
 //    public int delete(String num);
 //    public int update(Attraction c);

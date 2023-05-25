@@ -61,6 +61,33 @@ public class AttractionServiceImpl implements AttractionService{
         return mapper.selectPartial(paramMap);
     }
 
+    @Override
+    public List<Attraction> selectPartialSearch(String offset, String limit,String sido_code, String gugun_code, String content_type_id,String text) {
+        Map<String,String> paramMap = new HashMap<>();
+        paramMap.put("offset", offset);
+        paramMap.put("limit",limit);
+        paramMap.put("sido_code", sido_code);
+        paramMap.put("gugun_code",gugun_code);
+        paramMap.put("content_type_id", content_type_id);
+        paramMap.put("text",text);
+        return mapper.selectPartialSearch(paramMap);
+    }
+
+    @Override
+    public Integer getAttractionLength() {
+        return mapper.getAttractionLength();
+    }
+
+    @Override
+    public Integer getSearchedAttractionLength(String sido_code, String gugun_code, String content_type_id, String text) {
+        Map<String,String> paramMap = new HashMap<>();
+        paramMap.put("sido_code", sido_code);
+        paramMap.put("gugun_code",gugun_code);
+        paramMap.put("content_type_id", content_type_id);
+        paramMap.put("text",text);
+        return mapper.getSearchedAttractionLength(paramMap);
+    }
+
 
 //    @Override
 //    public int insert(Attraction c) {
