@@ -1,5 +1,6 @@
 package com.interceptor;
 
+import com.ssafy.vo.User;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -14,12 +15,11 @@ public class SessionInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         HttpSession session = request.getSession();
-        if(session.getAttribute("member")!=null){
-            return true;
-        }
-        else{
-//            response.sendRedirect("loginForm");
+        User user = (User) session.getAttribute("userinfo");
+        if(user == null) {
+            response.sendRedirect(request.getContextPath() + "/user/login");
             return false;
         }
+        return true;
     }
 }

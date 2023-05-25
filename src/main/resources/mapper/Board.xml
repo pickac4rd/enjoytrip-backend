@@ -14,7 +14,7 @@
 	</select>
 
 	<insert id="insert" parameterType="Board">
--- 		insert into board(board_id, title, content, date,userid,count,like_count) values (#{board_id}, #{title}, #{content},sysdate(),#{userId}, 0,0)
+<!-- 		insert into board(board_id, title, content, date,userid,count,like_count) values (#{board_id}, #{title}, #{content},sysdate(),#{userId}, 0,0)-->
 		insert into board(board_id, title, content, date,userid,count,like_count) values (#{board_id}, #{title}, #{content},sysdate(),"ssafy", 0,0)
 	</insert>
 
@@ -31,7 +31,7 @@
 	</update>
 
 	<update id="update" parameterType="Board">
--- 		update board set title = #{title}, content = #{content}, date = sysdate(), userid = #{userId},count = 0, like_count = 0 where board_id = #{board_id}
+<!-- 		update board set title = #{title}, content = #{content}, date = sysdate(), userid = #{userId},count = 0, like_count = 0 where board_id = #{board_id}-->
 		update board set title = #{title}, content = #{content}, date = sysdate(), userid = "ssafy",count = 0, like_count = 0 where board_id = #{board_id}
 	</update>
 
